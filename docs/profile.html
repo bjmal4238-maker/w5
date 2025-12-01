@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learning Hub - Profile</title>
+
+  <link rel="stylesheet" href="../styles/theme.css" />
+  <link rel="stylesheet" href="../styles/profile.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body data-theme="dark">
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="/pages/dashboard.html" class="logo">
+        <i class="bx bxs-book"></i>
+        <span>Learning Hub</span>
+      </a>
+
+      <div class="header-actions">
+        <select id="themeSelect" class="theme-select" title="Theme">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="beige">Beige</option>
+        </select>
+
+        <div class="user-profile">
+          <!-- الهيدر يحتاج هذا الـ id ليتم تحديث الصورة تلقائياً -->
+          <img id="userAvatar" class="avatar" src="https://via.placeholder.com/40" alt="User" />
+          <div class="profile-menu">
+            <button class="btn small" id="profileBtn">Home</button>
+            <button class="btn small outline" id="logoutBtn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content profile-page">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Your Profile</h2>
+          <p class="section-subtitle">Manage your public profile information</p>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-card">
+            <div class="avatar-large-wrap" style="width:160px;height:160px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+              <!-- معاينة كبيرة -->
+              <img id="profileAvatarLarge" src="https://via.placeholder.com/160" alt="Avatar" style="width:100%;height:100%;object-fit:cover" />
+            </div>
+            <h3 id="displayNameHeading">Display Name</h3>
+            <p class="muted" id="usernameLabel">@username</p>
+          </div>
+
+          <div class="profile-form-card">
+            <form id="profileForm">
+              <div class="form-row">
+                <label for="displayName">Display Name</label>
+                <input id="displayName" name="displayName" type="text" placeholder="Your display name" />
+              </div>
+
+              <!-- Avatar preview + upload + URL -->
+              <div class="form-row">
+                <label>Avatar Preview</label>
+                <div style="display:flex;gap:12px;align-items:center">
+                  <div id="avatarPreviewWrap" style="width:120px;height:120px;border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:pointer" title="اضغط لتغيير الصورة">
+                    <img id="profileAvatarLargeSmall" src="https://via.placeholder.com/160" alt="Avatar" style="width:100%;height:100%;object-fit:cover" />
+                  </div>
+                  <div style="flex:1">
+                    <label for="avatarFile" style="display:block;margin-bottom:6px">Upload image (png/jpg)</label>
+                    <input id="avatarFile" type="file" accept="image/*" />
+                    <div style="margin-top:8px">
+                      <label for="avatarUrl">Or Avatar URL</label>
+                      <input id="avatarUrl" name="avatarUrl" type="url" placeholder="https://..." />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label for="bio">Short Bio</label>
+                <textarea id="bio" name="bio" rows="4" placeholder="Tell others about yourself"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">Save Profile</button>
+                <button type="button" id="clearProfile" class="btn outline">Reset</button>
+              </div>
+            </form>
+
+            <div class="help-note">
+              <p>Profile is stored locally in your browser. To persist server-side, provide valid API endpoints.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h4>About Learning Hub</h4>
+        <p>Empowering learners worldwide with high-quality technical education</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>
+          <i class="bx bxs-phone"></i> +1 (555) 123-4567<br>
+          <i class="bx bxs-envelope"></i> support@learninghub.com
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" title="Twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+          <a href="#" title="GitHub"><i class="bx bxl-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Learning Hub. All rights reserved.</p></div>
+  </footer>
+
+  <!-- load script -->
+  <script src="../scripts/profile.js"></script>
+</body>
+</html>

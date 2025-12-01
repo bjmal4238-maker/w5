@@ -1,0 +1,143 @@
+/* admin.css — منظف ومجمّع (احتفظت بكل المتغيرات والسلوك) */
+
+/* Base: import theme */
+@import url("theme.css");
+
+/* Page layout */
+body { padding: var(--space-8); font-family: "Cairo", sans-serif; }
+.admin-container { max-width: 980px; margin: 48px auto; padding: 20px; gap: 18px; }
+
+/* Headings & separators */
+h1, h2 { color: var(--text); margin-bottom: var(--space-2); }
+h2 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+hr { border: none; height: 1px; background: var(--border); margin: var(--space-8) 0; }
+
+/* Cards */
+.card,
+.admin-container .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  margin: var(--space-6) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Form controls */
+label { display:block; margin-bottom:var(--space-2); color:var(--text); font-weight:600; }
+input, textarea {
+  width:100%;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--text-base);
+  box-sizing: border-box;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(116,148,236,0.1);
+}
+
+/* Small inputs used in admin */
+.small-input {
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  color:var(--text);
+  margin-top:6px;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+/* Course item */
+.course-item {
+  background: var(--bg-alt);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid var(--border);
+  gap:var(--space-3);
+  flex-wrap:wrap;
+}
+.course-item h3 { margin:0; flex:1; min-width:200px; }
+.course-item p { margin:0; color:var(--text-muted); flex:1; min-width:250px; }
+.course-item button { padding: var(--space-2) var(--space-3); font-size:12px; white-space:nowrap; }
+
+/* Course list rows */
+.course-row {
+  display:block;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  margin-bottom:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+}
+
+/* Statistics */
+#userCount { color: var(--accent); font-weight:700; font-size:var(--text-lg); }
+#courseMsg { min-height:20px; margin-top:10px; font-weight:600; color:#8bd48b; }
+
+/* Unified admin buttons */
+.contact-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:0;
+  cursor:pointer;
+  font-weight:700;
+  color:#fff;
+  background: linear-gradient(90deg,#2f81f7,#5f7fd4);
+  box-shadow: 0 6px 18px rgba(47,129,247,0.12);
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+  font-size:14px;
+}
+.contact-btn.small, .btn.small { padding:6px 10px; font-size:13px; }
+
+/* Variants */
+.contact-btn.secondary,
+.contact-btn[style*="background:#6b7280"] {
+  background:#6b7280;
+  box-shadow:none;
+}
+.contact-btn.danger,
+.contact-btn[style*="background:#ef4444"] {
+  background: linear-gradient(90deg,#ef4444,#d1342f);
+  box-shadow: 0 6px 18px rgba(239,68,68,0.12);
+}
+.contact-btn[style*="background:#f59e0b"] {
+  background: linear-gradient(90deg,#f59e0b,#d97706);
+  box-shadow: 0 6px 18px rgba(245,158,11,0.12);
+}
+
+/* Hover */
+.contact-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  opacity: 0.98;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: var(--space-4); }
+  .card { padding: var(--space-4); }
+  .course-item { flex-direction:column; align-items:flex-start; }
+  .course-item button { width:100%; }
+}
+@media (max-width: 640px) {
+  .admin-container { padding:12px; margin:18px; }
+  .contact-btn { width:100%; display:block; }
+  .contact-btn + .contact-btn { margin-top:8px; margin-left:0 !important; }
+}

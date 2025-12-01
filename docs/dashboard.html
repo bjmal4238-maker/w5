@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Learning Hub - Dashboard</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="../styles/theme.css" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+
+  <!-- icons + libs -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body data-theme="dark">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="logo"><i class="bx bxs-book"></i><span>Learning Hub</span></a>
+
+      <nav class="nav-main">
+        <a href="#featured" class="nav-link" data-section="featured"><i class="bx bxs-star"></i> Featured</a>
+        <a href="#cybersecurity" class="nav-link" data-section="cybersecurity"><i class="bx bxs-shield"></i> Cybersecurity</a>
+        <a href="#programming" class="nav-link" data-section="programming"><i class="bx bxs-code-curly"></i> Programming</a>
+        <a href="#ai" class="nav-link" data-section="ai"><i class="bx bxs-brain"></i> AI & ML</a>
+        <a href="#networking" class="nav-link" data-section="networking"><i class="bx bxs-network-chart"></i> Networking</a>
+        <a href="#webdev" class="nav-link" data-section="webdev"><i class="bx bxs-palette"></i> Web Dev</a>
+        <a href="#datascience" class="nav-link" data-section="datascience"><i class="bx bxs-bar-chart-alt-2"></i> Data Science</a>
+      </nav>
+
+      <div class="header-actions">
+        <select id="themeSelect" class="theme-select" title="Theme">
+          <option value="dark">Dark</option>
+          <option value="beige">light</option>
+        </select>
+
+        <div class="user-profile">
+          <img id="userAvatar" class="avatar" src="https://peoplealchemy.com/wp-content/uploads/2023/11/hand-digital-learning.jpg" alt="User" />
+          <div class="profile-menu">
+            <button class="btn small" id="profileBtn">Profile</button>
+            <button class="btn small outline" id="logoutBtn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Master the Skills That Matter</h1>
+          <p>Learn from industry experts through structured, project-based courses</p>
+          <div class="hero-cta">
+            <button class="btn large" id="exploreCourses"><i class="bx bxs-play-circle"></i> Explore Courses</button>
+            <button class="btn large outline" id="aboutBtn"><i class="bx bxs-info-circle"></i> Learn More</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Courses</h2>
+          <p class="section-subtitle">Trending and popular courses this week</p>
+        </div>
+        <div id="featuredGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="cybersecurity" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-shield"></i><h2 class="section-title">Cybersecurity</h2></div>
+          <p class="section-subtitle">Learn ethical hacking, security protocols, and defense mechanisms</p>
+        </div>
+        <div id="cybersecurityGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="programming" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-code-curly"></i><h2 class="section-title">Programming</h2></div>
+          <p class="section-subtitle">Master languages from Python to JavaScript, C++ to Go</p>
+        </div>
+        <div id="programmingGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="ai" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-brain"></i><h2 class="section-title">Artificial Intelligence & Machine Learning</h2></div>
+          <p class="section-subtitle">Deep learning, neural networks, natural language processing</p>
+        </div>
+        <div id="aiGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="networking" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-network-chart"></i><h2 class="section-title">Networking</h2></div>
+          <p class="section-subtitle">TCP/IP, routing, switching, network security, and cloud</p>
+        </div>
+        <div id="networkingGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="webdev" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-palette"></i><h2 class="section-title">Web Development</h2></div>
+          <p class="section-subtitle">Frontend, backend, full-stack, React, Vue, Node.js, and more</p>
+        </div>
+        <div id="webdevGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="datascience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-top"><i class="bx bxs-bar-chart-alt-2"></i><h2 class="section-title">Data Science</h2></div>
+          <p class="section-subtitle">Data analysis, visualization, statistics, and big data technologies</p>
+        </div>
+        <div id="datascienceGrid" class="courses-grid"></div>
+      </div>
+    </section>
+
+    <section id="mycourses" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">My Courses</h2>
+          <p class="section-subtitle">Continue learning from where you left off</p>
+        </div>
+        <div id="myCoursesGrid" class="courses-grid empty-state">
+          <div class="empty-message"><i class="bx bxs-inbox"></i><p>No courses enrolled yet. Start exploring!</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-section"><h4>About Learning Hub</h4><p>Empowering learners worldwide with high-quality technical education</p></div>
+      <!-- <div class="footer-section"><h4>Contact</h4><p><i class="bx bxs-phone"></i> +1 (555) 123-4567<br><i class="bx bxs-envelope"></i> support@learninghub.com</p></div> -->
+      <div class="footer-section"><h4>Follow Us</h4><div class="social-links"><a href="#" title="Facebook"><i class="bx bxl-facebook"></i></a><a href="#" title="Twitter"><i class="bx bxl-twitter"></i></a><a href="#" title="LinkedIn"><i class="bx bxl-linkedin"></i></a><a href="#" title="GitHub"><i class="bx bxl-github"></i></a></div></div>
+    </div>
+    <!-- <div class="footer-bottom"> <p>&copy; 2025 Learning Hub. All rights reserved.</p></div> -->
+    <div class="admin-bottom-control" style="text-align:right;margin:20px 0"><button id="adminLoginBtn" class="btn small outline">.</button></div>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="videoModal" aria-hidden="true">
+    <div class="modal-box modal-video" role="dialog" aria-modal="true">
+      <button class="modal-close" id="videoModalClose"><i class="bx bxs-x-circle"></i></button>
+      <h3 id="videoTitle">Video Title</h3>
+      <div class="video-container"><iframe id="videoFrame" width="100%" height="500" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p id="videoDescription"></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="previewModal" aria-hidden="true">
+    <div class="modal-box modal-video modal-small" role="dialog" aria-modal="true">
+      <button class="modal-close" id="previewModalClose"><i class="bx bxs-x-circle"></i></button>
+      <h3 id="previewTitle">Preview</h3>
+      <div class="video-container"><iframe id="previewFrame" width="100%" height="260" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <p id="previewNote">This is a 15 second preview.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="successModal"><div class="modal-box"><div class="modal-icon success"><i class="bx bxs-check-circle"></i></div><h3>Success!</h3><p id="successMessage">Operation completed successfully.</p></div></div>
+  <div class="modal-overlay" id="errorModal"><div class="modal-box"><div class="modal-icon error"><i class="bx bxs-x-circle"></i></div><h3>Error</h3><p id="errorMessage">An error occurred. Please try again.</p></div></div>
+
+  <!-- scripts -->
+  <script src="../scripts/dashboard.js"></script>
+
+  <!-- admin login (single, clean) -->
+  <script>
+    document.getElementById('adminLoginBtn')?.addEventListener('click', adminLogin);
+    function adminLogin(){
+      Swal.fire({
+        title: 'تسجيل دخول الأدمن',
+        html:
+          '<input id="admin-user" class="swal2-input" placeholder="اسم المستخدم">' +
+          '<input id="admin-pass" class="swal2-input" type="password" placeholder="كلمة السر">',
+        confirmButtonText: 'دخول', showCancelButton: true, cancelButtonText: 'إلغاء',
+        preConfirm: () => {
+          const u = document.getElementById('admin-user').value.trim();
+          const p = document.getElementById('admin-pass').value;
+          if(!u || !p) return Swal.showValidationMessage("املأ جميع الحقول");
+          if(u === "admin" && p === "admin111"){
+            localStorage.setItem("username","admin"); localStorage.setItem("admin_pass","admin111");
+            return true;
+          }
+          return Swal.showValidationMessage("خطأ في اسم المستخدم أو كلمة السر");
+        }
+      }).then(r => {
+        if(r.isConfirmed){ Swal.fire({icon:'success',title:'تم الدخول',timer:700,showConfirmButton:false}).then(()=> window.location.href = 'admin.html'); }
+      });
+    }
+  </script>
+</body>
+</html>

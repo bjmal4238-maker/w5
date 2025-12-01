@@ -1,0 +1,103 @@
+/* profile.css — cleaned & fixed (responsive + safe) */
+
+/* layout */
+.profile-page { padding-top: 90px; }
+.profile-grid { display: grid; grid-template-columns: 320px 1fr; gap: 36px; align-items: start; }
+
+/* cards */
+.profile-card,
+.profile-form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+/* avatar large (fixed correct size: 160px) */
+.avatar-large-wrap {
+  width: 160px;
+  height: 160px;
+  max-width: 40vw;
+  max-height: 40vw;
+  margin: 0 auto 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+#profileAvatarLarge {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* avatar small / preview inside form */
+#avatarPreviewWrap {
+  width: 120px;
+  height: 120px;
+  max-width: 30vw;
+  max-height: 30vw;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+}
+#profileAvatarLargeSmall {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* prevent images from overflowing card layout */
+.profile-card img,
+.profile-form-card img { max-width: 100%; display: block; }
+
+/* form rows */
+.form-row { margin-bottom: 14px; }
+.form-row label { display: block; margin-bottom: 6px; font-weight: 600; }
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* actions */
+.form-actions { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
+.form-actions .btn { min-width:120px; }
+
+/* helper text */
+.help-note { margin-top:16px; font-size:13px; color:var(--text-muted); }
+.muted { color:var(--text-muted); }
+
+/* responsive */
+@media (max-width: 860px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .avatar-large-wrap { margin: 0 auto; }
+}
+
+/* force header avatar to stay small and circular */
+header .user-profile .avatar,
+#userAvatar {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
